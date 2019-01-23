@@ -58,29 +58,39 @@ def crawl():
                 counl = 0
                 # 获取其中每个img标签中的src属性，即它的文件地址
                 link = girl.get("src")
+                
+                """
+	                字符串在python程序中时unicode编码格式，
+	                如果需要处理首先需要转换为utf-8格式
+	                如果需要和磁盘打交道，写入到硬盘中使用utf-8格式
+	                如果写入到文件中，使用with open打开，使用unicode编码格式
+                """
                 # 获取标题，以后可以作为图片文件的名字来使用
                 title = girl.get("title")
+                title = title.encode('utf-8')
+                title = title.replace('.', '')
                 title = title.replace("?", "？")
                 title = title.replace('"', '“')
                 title = title.replace('/', '')
                 title = title.replace('%', '')
+                title = title.decode('utf-8')
 
                 # 计数，方便我们统计共有多少个文件被下载。。注意一点就是如果文件重名了，，后面的文件将会覆盖之前下载的文件。
                 count += 1
 
                 # print type(title)
-                print '第{}channel中第{}页的第{}张图片\t'.format(i, j, count) + title,
+                print '第{}channel中第{}页的第{}张图片\t'.format(i, j, count) + title.encode("utf-8"),
                 print link
                 response = urllib2.urlopen(link)
                 img = response.read()
 
                 # 判断是否已经存在同名文件，如果存在，就通过在名称后添加数字的方式进行命名
-                if not os.path.exists('img/{}.jpg'.format(title)):
+                if not os.path.exists('img/{}.jpg'.format(title.encode("utf-8"))):
                     counl = 0
                     with open('img/%d-%d-%d-%s_%d.jpg' % (i, j, count, title, counl), 'wb') as f:
                         f.write(img)
                         f.close()
-                elif os.path.exists('img/{}.jpg'.format(title)):
+                elif os.path.exists('img/{}.jpg'.format(title.encode("utf-8"))):
                     counl += 1
                     with open('img/%d-%d-%d-%s_%d.jpg' % (i, j, count, title, counl), 'wb') as f:
                         f.write(img)
