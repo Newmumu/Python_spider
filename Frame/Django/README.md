@@ -5,7 +5,7 @@
 
 ## 目录
 ### 第一章：介紹Django 
-- MVC 设计模式
+- [MVC 设计模式](https://github.com/fairylin/learn_python2/blob/master/Frame/Django/%E7%AC%AC%E4%B8%80%E7%AB%A0_MVC%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.md)
 ### 第二章： 入门 
 ### 第三章： 视图和URL配置 
 ### 第四章：模版 
