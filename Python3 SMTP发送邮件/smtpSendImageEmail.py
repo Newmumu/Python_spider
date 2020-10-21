@@ -46,7 +46,7 @@ msgRoot.attach(msgImage)
 
 try:
     smtpObj = smtplib.SMTP(host='smtp.163.com', port=25)
-    smtpObj.login(user=TEST_EMAIL_ADDR, password='GSJHOGXFXWQXFNDF')
+    smtpObj.login(user=TEST_EMAIL_ADDR, password='邮件系统smtp中的授权码')
     smtpObj.sendmail(sender, receivers, msgRoot.as_string())
     print("邮件发送成功")
 except smtplib.SMTPException:
