@@ -1,0 +1,8 @@
+Python SMTP对象使用sendmail方法发送邮件，语法如下：
+SMTP.sendmail(from_addr, to_addrs, msg[, mail_options, rcpt_options]
+
+参数说明：
+from_addr: 邮件发送者地址。
+to_addrs: 字符串列表，邮件发送地址。
+msg: 发送消息
+这里要注意一下第三个参数，msg是字符串，表示邮件。我们知道邮件一般由标题，发信人，收件人，邮件内容，附件等构成，发送邮件的时候，要注意msg的格式。这个格式就是smtp协议中定义的格式。
